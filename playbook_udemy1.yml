@@ -1,0 +1,12 @@
+---
+- name: user
+  hosts: Ubuntu1
+  become: true
+  tasks:
+   - name: Ping
+     ping:
+   - name: Create user
+     user:
+       name: "{{ user }}"
+       state: present
+     
