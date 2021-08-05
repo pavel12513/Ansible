@@ -1,0 +1,13 @@
+---
+ - name: What is this?
+   hosts: Web_server
+   become: yes
+
+   vars:
+     comm: ls -l
+
+
+   tasks:
+
+   - name: Ping
+     ping:

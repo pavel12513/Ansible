@@ -1,0 +1,10 @@
+---
+
+
+- name: Ansible
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Ping to my Server
+    ping:

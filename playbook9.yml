@@ -1,0 +1,38 @@
+# Templet
+
+---
+- name: Templet for playbook
+  hosts: "{{ host }}"
+  become: yes
+
+  vars:
+   sours: ./index.j2
+   dest: /var/www/html 
+
+
+  tasks:
+
+
+  - name: Ping
+    ping:
+
+
+  - name: Install Apache2
+    apt: name=apache2 state=latest
+
+  - name: Generate INDEX.HTML
+    template: src={{ sours }} dest={{ dest }} mode=0555
+    notify: Restart Apache2
+
+#  - name: Copy ms Web Site
+#    copy: src={{ sours }} dest={{ dest }} mode=0555   
+#    notify: Restart Apache2
+
+
+  - name: Start Apache
+    service: name=apache2 state=started enabled=yes
+
+
+  handlers: 
+  - name: Restart Apache2
+    service: name=apache2 state=restarted

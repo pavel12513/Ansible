@@ -1,0 +1,22 @@
+---
+
+- name: My Web Site
+  hosts: Web_Server
+  become: yes
+
+
+  tasks:
+
+  - name: Ping
+    ping:
+
+  - name: Update
+    shell: sudo apt update
+  
+  - name: Install Apache
+    apt: name=apache2 state=latest
+    notify:  Restart Apache
+
+  handlers:
+  - name: Restart Apache
+    service: name=apache2 state=restarted

@@ -1,0 +1,14 @@
+---
+- name: Delete Apache
+  hosts: Web_Server
+  become: yes
+
+
+  tasks:
+
+  - name: Ping Server
+    ping:
+
+
+  - name: Delete Apache2
+    apt: name=apache2 state=absent

@@ -1,0 +1,12 @@
+#extra-Vart
+
+---
+- name: Extra Vars
+  hosts: "{{ myhosts }}"
+  become: yes
+
+
+  tasks:
+
+  - name: Ping all server
+    ping:
